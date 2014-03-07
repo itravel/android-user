@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">iTravel</string>
+    <string name="action_settings">设置</string>
+    <string name="home">主页</string>
+    <string name="explore">探索</string>
+    <string name="biz">商家</string>
+    <string name="me">我</string>
+
+</resources>
