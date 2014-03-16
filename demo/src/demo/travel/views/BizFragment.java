@@ -14,6 +14,5 @@ public class BizFragment extends Fragment {
 		View myFragmentView = inflater.inflate(R.layout.fragment_biz, container,
 				false);
 		return myFragmentView;
-		//aaa
 	}
 }
