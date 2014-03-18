@@ -5,7 +5,14 @@
     <string name="action_settings">设置</string>
     <string name="home">主页</string>
     <string name="explore">探索</string>
+    <string name="explore_destination">目的地</string>
+    <string name="explore_friends">朋友圈</string>
+    <string name="explore_romance">偶遇</string>
+    <string name="explore_group">结伴</string>
     <string name="biz">商家</string>
     <string name="me">我</string>
+    <string name="action_settings">设置</string>
+    <string name="action_help">帮助</string>
 
+    <string name="goto_text_order">继续</string>
 </resources>

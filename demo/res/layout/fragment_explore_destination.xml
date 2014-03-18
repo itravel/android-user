@@ -1,0 +1,88 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/baidu_map_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true" />
+
+        <ImageButton
+            android:id="@+id/location_button"
+            android:layout_width="32.0dp"
+            android:layout_height="32.0dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="12.0dp"
+            android:layout_marginTop="12.0dp"
+            android:background="@drawable/tap_to_locate" />
+
+        <ImageButton
+            android:id="@+id/zoom_out"
+            android:layout_width="32.0dp"
+            android:layout_height="32.0dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="12.0dp"
+            android:layout_marginRight="12.0dp"
+            android:background="@drawable/zoom_out" />
+
+        <ImageView
+            android:layout_width="32.0dp"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="44.0dp"
+            android:layout_marginRight="12.0dp"
+            android:background="#ffc6c4c3" />
+
+        <ImageButton
+            android:id="@+id/zoom_in"
+            android:layout_width="32.0dp"
+            android:layout_height="32.0dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="44.5dp"
+            android:layout_marginRight="12.0dp"
+            android:background="@drawable/zoom_in" />
+
+        <ImageView
+            android:id="@+id/me"
+            android:layout_width="11dp"
+            android:layout_height="27dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/me" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ffffff"
+        android:orientation="horizontal" >
+
+<!--         <ImageButton -->
+<!--             android:layout_width="wrap_content" -->
+<!--             android:layout_height="match_parent" -->
+<!--             android:background="#00000000" -->
+<!--             android:src="@drawable/icon_voice_normal" /> -->
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/goto_text_order"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/goto_text_order" />
+    </LinearLayout>
+
+</LinearLayout>

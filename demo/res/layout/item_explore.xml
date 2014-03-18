@@ -1,0 +1,11 @@
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/explore_funcname"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:layout_weight="1"
+    android:paddingStart="20dp"
+    android:drawableLeft="@drawable/ic_launcher"
+    android:drawablePadding="20dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" />
+
