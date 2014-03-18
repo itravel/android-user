@@ -93,9 +93,7 @@ public class ExploreFragment extends Fragment implements OnItemClickListener{
 					.findViewById(R.id.explore_funcname);
 			textView.setText(getItem(position));
 			return view;
-
 		}
-
 	}
 
 
