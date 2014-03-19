@@ -134,8 +134,8 @@ public class DestFragment extends Fragment {
 	}
 
 	private void searchTargetAroundHotel() {
-		Double latitude = (double) targetGeo.getLatitudeE6() / 1E6;
-		Double longtitude = (double) targetGeo.getLongitudeE6() / 1E6;
+		Double latitude = targetGeo.getLatitudeE6() / 1E6;
+		Double longtitude = targetGeo.getLongitudeE6() / 1E6;
 		searchAroundHotel(latitude, longtitude);
 	}
 
@@ -213,6 +213,7 @@ public class DestFragment extends Fragment {
 		};
 		mMapView.regMapViewListener(mBMapMan, mapViewListener);
 		MKMapStatusChangeListener listener = new MKMapStatusChangeListener() {
+			@Override
 			public void onMapStatusChange(MKMapStatus mapStatus) {
 				targetGeo = mapStatus.targetGeo;
 			}
@@ -292,6 +293,7 @@ public class DestFragment extends Fragment {
 	}
 
 	public class ClickListener implements OnClickListener {
+		@Override
 		public void onClick(View paramView) {
 			switch (paramView.getId()) {
 			case R.id.zoom_in:

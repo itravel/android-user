@@ -4,8 +4,8 @@
     android:orientation="vertical" >
 
     <fragment
-        android:name="demo.travel.views.explore.DestFragment"
         android:id="@+id/explore_destination"
+        android:name="demo.travel.views.explore.DestFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
