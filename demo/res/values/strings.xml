@@ -14,5 +14,7 @@
     <string name="action_settings">设置</string>
     <string name="action_help">帮助</string>
     <string name="goto_text_order">继续</string>
+    <string name="action_search">搜索</string>
+    <string name="action_switch_list">列表</string>
 
 </resources>

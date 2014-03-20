@@ -29,7 +29,7 @@ import com.baidu.platform.comapi.basestruct.GeoPoint;
 
 import demo.travel.R;
 
-public class DestFragment extends Fragment {
+public class DestMapFragment extends Fragment {
 
 	private String TAG = "HOTEL_MAIN";
 	private LocationData locData = null;
@@ -181,7 +181,7 @@ public class DestFragment extends Fragment {
 		mBMapMan = new BMapManager(getActivity().getApplication());
 		mBMapMan.init("y5qvr6Apv4vC3t9SzlteXARS", null);
 
-		mRootView = inflater.inflate(R.layout.fragment_explore_destination, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_explore_map_destination, container, false);
 
 		this.initMap();
 		this.initUI();
@@ -269,21 +269,21 @@ public class DestFragment extends Fragment {
 			Double latitude = location.getLatitude();
 			Double longtitude = location.getLongitude();
 
-			DestFragment.this.locData.latitude = latitude;
-			DestFragment.this.locData.longitude = longtitude;
-			DestFragment.this.myLocationOverlay
-					.setData(DestFragment.this.locData);
-			DestFragment.this.mMapView.refresh();
+			DestMapFragment.this.locData.latitude = latitude;
+			DestMapFragment.this.locData.longitude = longtitude;
+			DestMapFragment.this.myLocationOverlay
+					.setData(DestMapFragment.this.locData);
+			DestMapFragment.this.mMapView.refresh();
 
 			GeoPoint point = new GeoPoint((int) (latitude * 1E6),
 					(int) (longtitude * 1E6));
 
 			targetGeo = point;
-			if (DestFragment.this.isFirstLoc.booleanValue()) {
-				DestFragment.this.mMapController.setZoom(14.0F);
-				DestFragment.this.mMapController.animateTo(point);
+			if (DestMapFragment.this.isFirstLoc.booleanValue()) {
+				DestMapFragment.this.mMapController.setZoom(14.0F);
+				DestMapFragment.this.mMapController.animateTo(point);
 				searchTargetAroundHotel();
-				DestFragment.this.isFirstLoc = Boolean.valueOf(false);
+				DestMapFragment.this.isFirstLoc = Boolean.valueOf(false);
 			}
 		}
 
@@ -297,14 +297,10 @@ public class DestFragment extends Fragment {
 		public void onClick(View paramView) {
 			switch (paramView.getId()) {
 			case R.id.zoom_in:
-				DestFragment.this.mMapController.zoomIn();
+				DestMapFragment.this.mMapController.zoomIn();
 				return;
 			case R.id.zoom_out:
-				DestFragment.this.mMapController.zoomOut();
-				return;
-			case R.id.goto_text_order:
-//				Intent intent = new Intent(DestFragment.this.getActivity(), TextOrderActivity.class);
-//				DestFragment.this.getActivity().startActivity(intent);
+				DestMapFragment.this.mMapController.zoomOut();
 				return;
 			}
 		}

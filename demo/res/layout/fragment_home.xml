@@ -1,35 +1,35 @@
-<uk.co.senab.actionbarpulltorefresh.extras.actionbarcompat.PullToRefreshLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<uk.co.senab.actionbarpulltorefresh.extras.actionbarcompat.PullToRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ptr_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" >
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/ptr_scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp"
-        android:scrollbarStyle="outsideInset">
+        android:scrollbarStyle="outsideInset" >
 
         <LinearLayout
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="40dp"
                 android:gravity="center"
-                android:padding="16dp" />
+                android:padding="16dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="40dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="testit" />
         </LinearLayout>
-
     </ScrollView>
+
 </uk.co.senab.actionbarpulltorefresh.extras.actionbarcompat.PullToRefreshLayout>
