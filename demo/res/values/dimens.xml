@@ -4,7 +4,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-     <!-- UI elements -->
+    <!-- UI elements -->
     <dimen name="whats_on_height">64dp</dimen>
     <dimen name="tab_height">48dp</dimen>
     <dimen name="track_icon_source_size">48dp</dimen>
@@ -38,12 +38,12 @@
     <dimen name="sandbox_company_image_size">100dp</dimen>
     <!-- Google+ -->
     <dimen name="stream_name_text_size">16sp</dimen>
-    
-     <!-- Widget -->
+
+    <!-- Widget -->
     <dimen name="widget_margin">8dp</dimen>
 
     <!-- Map -->
     <dimen name="map_content_padding">8dp</dimen>
     <dimen name="map_infowindow_width">300dp</dimen>
-    
+
 </resources>

@@ -66,13 +66,16 @@ public class MainActivity extends ActionBarActivity implements
 
 	/* The following are each of the ActionBar.TabListener callbacks */
 
+	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
 		mViewPager.setCurrentItem(tab.getPosition());
 	}
 
+	@Override
 	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
 	}
 
+	@Override
 	public void onTabReselected(Tab tab, FragmentTransaction ft) {
 	}
 }
