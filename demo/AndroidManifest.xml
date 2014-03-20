@@ -14,13 +14,21 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
         <activity
-            android:name="demo.travel.views.MainActivity"
-            android:label="@string/app_name" >
+            android:name="demo.travel.views.WelcomeActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="demo.travel.views.LoginActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="demo.travel.views.MainActivity"
+            android:label="@string/app_name" >
         </activity>
     </application>
 
