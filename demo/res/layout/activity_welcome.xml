@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/btn_test_go_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="进入主界面（测试用）" >
+    </Button>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal|bottom"
+        android:orientation="horizontal"
+        android:paddingBottom="15dp"
+        android:paddingTop="13dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_welcome_login"
+                android:layout_width="120dp"
+                android:layout_height="48dp"
+                android:layout_margin="8dp"
+                android:background="#ff00cc33"
+                android:text="登录"
+                android:textColor="#ffffffff" />
+
+            <Button
+                android:id="@+id/btn_welcome_register"
+                android:layout_width="120dp"
+                android:layout_height="48dp"
+                android:layout_margin="8dp"
+                android:background="#ffffffff"
+                android:text="注册"
+                android:textColor="#ff000000" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
