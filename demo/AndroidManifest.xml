@@ -82,22 +82,6 @@
                 android:value="android.intent.action.MAIN" />
         </activity>
         <activity
-            android:name="demo.travel.views.explore.FriendsActivity"
-            android:label="@string/explore_friends"
-            android:parentActivityName="demo.travel.views.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="android.intent.action.MAIN" />
-        </activity>
-        <activity
-            android:name="demo.travel.views.explore.RomanceActivity"
-            android:label="@string/explore_romance"
-            android:parentActivityName="demo.travel.views.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="android.intent.action.MAIN" />
-        </activity>
-        <activity
             android:name="demo.travel.views.explore.GroupActivity"
             android:label="@string/explore_group"
             android:parentActivityName="demo.travel.views.MainActivity" >

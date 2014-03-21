@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.baidu.location.BDLocation;
@@ -37,7 +37,7 @@ public class DestMapFragment extends Fragment {
 	private MyLocationOverlay myLocationOverlay;
 	private GeoPoint targetGeo = null;
 	private Boolean isFirstLoc = true;
-//	private HotelDao hotelDao = null;
+	// private HotelDao hotelDao = null;
 
 	private View mRootView = null;
 
@@ -50,7 +50,8 @@ public class DestMapFragment extends Fragment {
 	private static final int UPDATE_TIME = 1000;
 
 	private void initMap() {
-		this.mMapView = (MapView) this.mRootView.findViewById(R.id.baidu_map_view);
+		this.mMapView = (MapView) this.mRootView
+				.findViewById(R.id.baidu_map_view);
 		this.mMapView.setBuiltInZoomControls(false);
 		this.mMapController = this.mMapView.getController();
 		this.mMapController.setZoom(14.0F);
@@ -63,10 +64,9 @@ public class DestMapFragment extends Fragment {
 		this.mLocClient = new LocationClient(getActivity()
 				.getApplicationContext());
 
-
 		LocationClientOption option = new LocationClientOption();
-		option.setOpenGps(true); 
-		option.setCoorType("bd09ll"); 
+		option.setOpenGps(true);
+		option.setCoorType("bd09ll");
 		option.setScanSpan(UPDATE_TIME);
 		mLocClient.setLocOption(option);
 
@@ -80,15 +80,16 @@ public class DestMapFragment extends Fragment {
 		this.myLocationOverlay.setData(this.locData);
 		this.mMapView.getOverlays().add(this.myLocationOverlay);
 
-		//this.myMarkerOverLay = new ItemizedOverlay(getResources().getDrawable(
-		//		R.drawable.marker), mMapView);
-		//this.mMapView.getOverlays().add(this.myMarkerOverLay);
+		// this.myMarkerOverLay = new
+		// ItemizedOverlay(getResources().getDrawable(
+		// R.drawable.marker), mMapView);
+		// this.mMapView.getOverlays().add(this.myMarkerOverLay);
 		this.mMapView.refresh();
 	}
 
 	private void initUI() {
 		OnClickListener clickListener = new ClickListener();
-		
+
 		ImageButton locationButton = ((ImageButton) mRootView
 				.findViewById(R.id.location_button));
 		locationButton.setOnClickListener(clickListener);
@@ -98,7 +99,7 @@ public class DestMapFragment extends Fragment {
 		ImageButton zoomOutButton = ((ImageButton) mRootView
 				.findViewById(R.id.zoom_out));
 		zoomOutButton.setOnClickListener(clickListener);
-		
+
 	}
 
 	private void addItemToMyOverLay(double paramDouble1, double paramDouble2,
@@ -123,13 +124,13 @@ public class DestMapFragment extends Fragment {
 	private View getView(String paramString) {
 		View localView = getActivity().getLayoutInflater().inflate(
 				R.layout.marker, null);
-		//TextView localTextView = (TextView) localView
-		//		.findViewById(R.id.hotel_brand);
+		// TextView localTextView = (TextView) localView
+		// .findViewById(R.id.hotel_brand);
 		String str = paramString;
 		if (paramString.length() >= 6)
 			str = paramString.substring(0, 6);
-		//localTextView.setText(str);
-		//localTextView.setTextColor(-1);
+		// localTextView.setText(str);
+		// localTextView.setTextColor(-1);
 		return localView;
 	}
 
@@ -140,39 +141,39 @@ public class DestMapFragment extends Fragment {
 	}
 
 	private void searchAroundHotel(Double latitude, Double longtitude) {
-//		hotelDao.getAroundHotel(latitude, longtitude,
-//				new AsyncHttpResponseHandler() {
-//
-//					@Override
-//					public void onSuccess(String response) {
-//						myMarkerOverLay.removeAll();
-//						try {
-//							JSONArray ja = new JSONArray(response);
-//							for (int i = 0; i < ja.length() && i < 20; i++) {
-//								JSONObject jo = ja.getJSONObject(i);
-//								addItemToMyOverLay(jo.getDouble("latitude"),
-//										jo.getDouble("longtitude"),
-//										jo.getString("name"), null);
-//							}
-//							mMapView.refresh();
-//						} catch (JSONException e) {
-//							e.printStackTrace();
-//						}
-//					}
-//
-//					@Override
-//					public void onStart() {
-//						super.onStart();
-//						Log.d(TAG, "Start searchAroundHotel");
-//					}
-//
-//					@Override
-//					public void onFinish() {
-//						super.onFinish();
-//						Log.d(TAG, "Finish searchAroundHotel");
-//					}
-//
-//				});
+		// hotelDao.getAroundHotel(latitude, longtitude,
+		// new AsyncHttpResponseHandler() {
+		//
+		// @Override
+		// public void onSuccess(String response) {
+		// myMarkerOverLay.removeAll();
+		// try {
+		// JSONArray ja = new JSONArray(response);
+		// for (int i = 0; i < ja.length() && i < 20; i++) {
+		// JSONObject jo = ja.getJSONObject(i);
+		// addItemToMyOverLay(jo.getDouble("latitude"),
+		// jo.getDouble("longtitude"),
+		// jo.getString("name"), null);
+		// }
+		// mMapView.refresh();
+		// } catch (JSONException e) {
+		// e.printStackTrace();
+		// }
+		// }
+		//
+		// @Override
+		// public void onStart() {
+		// super.onStart();
+		// Log.d(TAG, "Start searchAroundHotel");
+		// }
+		//
+		// @Override
+		// public void onFinish() {
+		// super.onFinish();
+		// Log.d(TAG, "Finish searchAroundHotel");
+		// }
+		//
+		// });
 	}
 
 	@Override
@@ -181,12 +182,13 @@ public class DestMapFragment extends Fragment {
 		mBMapMan = new BMapManager(getActivity().getApplication());
 		mBMapMan.init("y5qvr6Apv4vC3t9SzlteXARS", null);
 
-		mRootView = inflater.inflate(R.layout.fragment_explore_map_destination, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_explore_map_destination,
+				container, false);
 
 		this.initMap();
 		this.initUI();
-		
-		//hotelDao = new HotelDao();
+
+		// hotelDao = new HotelDao();
 
 		MKMapViewListener mapViewListener = new MKMapViewListener() {
 
@@ -218,7 +220,7 @@ public class DestMapFragment extends Fragment {
 				targetGeo = mapStatus.targetGeo;
 			}
 		};
-		mMapView.regMapStatusChangeListener(listener); 
+		mMapView.regMapStatusChangeListener(listener);
 
 		return mRootView;
 	}
