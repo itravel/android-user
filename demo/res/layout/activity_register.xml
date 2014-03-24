@@ -16,14 +16,16 @@
 
         <Button
             android:id="@+id/btn_register_pre_step"
-            android:layout_width="96dp"
+            android:layout_width="0dp"
             android:layout_height="48dp"
+            android:layout_weight="1"
             android:text="上一步" />
 
         <Button
             android:id="@+id/btn_register_next_step"
-            android:layout_width="96dp"
+            android:layout_width="0dp"
             android:layout_height="48dp"
+            android:layout_weight="1"
             android:text="下一步" />
     </LinearLayout>
 

@@ -4,23 +4,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 import demo.travel.R;
+import demo.travel.views.register.RegisterBaseFragment.onNextActionListener;
 
 public class RegisterActivity extends ActionBarActivity implements
-		OnClickListener {
+		OnClickListener, onNextActionListener, BackDialogFragment.BackDialogListener,
+		PhoneConfirmDialogFragment.PhoneConfirmDialogListener {
 
 	private Button mBtnRegisterPreStep;
 	private Button mBtnRegisterNextStep;
 	private int mCurrentIndex = 0;
-	private List<Fragment> mFragmentList = new ArrayList<Fragment>();
-	private Fragment mCurrentFragment;
+	private List<RegisterBaseFragment> mFragmentList = new ArrayList<RegisterBaseFragment>();
+	private RegisterBaseFragment mCurrentFragment;
+	private RegisterBaseFragment mRegisterPhoneFragment;
+	private RegisterBaseFragment mRegisterCodeFragment;
+	private RegisterBaseFragment mRegisterPasswordFragment;
+	private RegisterBaseFragment mRegisterBaseInfoFragment;
+	private RegisterBaseFragment mRegisterPhotoFragment;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +41,21 @@ public class RegisterActivity extends ActionBarActivity implements
 
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-		mFragmentList.add(new RegisterPhoneFragment());
-		mFragmentList.add(new RegisterCodeFragment());
-		mFragmentList.add(new RegisterPasswordFragment());
-		mFragmentList.add(new RegisterBaseInfoFragment());
-		mFragmentList.add(new RegisterPhotoFragment());
+		mRegisterPhoneFragment = new RegisterPhoneFragment();
+		mRegisterCodeFragment = new RegisterCodeFragment();
+		mRegisterPasswordFragment = new RegisterPasswordFragment();
+		mRegisterBaseInfoFragment = new RegisterBaseInfoFragment();
+		mRegisterPhotoFragment = new RegisterPhotoFragment();
+		
+		mFragmentList.add(mRegisterPhoneFragment);
+		mFragmentList.add(mRegisterCodeFragment);
+		mFragmentList.add(mRegisterPasswordFragment);
+		mFragmentList.add(mRegisterBaseInfoFragment);
+		mFragmentList.add(mRegisterPhotoFragment);
+		
+		for (RegisterBaseFragment f : mFragmentList) {
+			f.setOnNextActionListener(this);
+		}
 
 		if (savedInstanceState == null) {
 			mCurrentFragment = mFragmentList.get(mCurrentIndex);
@@ -57,7 +76,7 @@ public class RegisterActivity extends ActionBarActivity implements
 		mBtnRegisterNextStep.setOnClickListener(this);
 	}
 
-	public void switchContent(Fragment from, Fragment to) {
+	public void switchContent(RegisterBaseFragment from, RegisterBaseFragment to) {
 		if (mCurrentFragment != to) {
 			mCurrentFragment = to;
 			FragmentTransaction transaction = getSupportFragmentManager()
@@ -71,8 +90,9 @@ public class RegisterActivity extends ActionBarActivity implements
 		}
 	}
 
-	public void initFragment() {
-		switchContent(mCurrentFragment, mFragmentList.get(mCurrentIndex));
+	public RegisterBaseFragment initFragment() {
+		RegisterBaseFragment fragment = (RegisterBaseFragment) mFragmentList.get(mCurrentIndex);
+		switchContent(mCurrentFragment, fragment);
 		switch (mCurrentIndex) {
 		case 0:
 			getSupportActionBar().setTitle("注册新账号(1/5)");
@@ -100,30 +120,67 @@ public class RegisterActivity extends ActionBarActivity implements
 			mBtnRegisterNextStep.setText("完    成");
 			break;
 		}
+		return fragment;
 	}
 
 	public void prevStep() {
-		if (mCurrentIndex == 0) {
-			// mBackDialog.show();
+		if (mCurrentIndex > 0) {
+			if (mCurrentIndex == 0) {
+				// mBackDialog.show();
+			} else {
+				mCurrentIndex--;
+				initFragment();
+			}
 		} else {
-			mCurrentIndex--;
-			initFragment();
+			showBackDialog();
 		}
+	}
+
+	public void nextStep() {
+		if (mCurrentIndex < mFragmentList.size() - 1) {
+			if (mCurrentFragment.validate()) {
+				if (mCurrentFragment.isChange()) {
+					mCurrentFragment.nextStep();
+				} else {
+					next();
+				}
+			}
+			
+//			if (mCurrentIndex == 0) {
+//				showPhoneConfirmDialog();
+//			} else {
+//				mCurrentIndex++;
+//				initFragment();
+//			}
+		}
+	}
+
+	public void showBackDialog() {
+		// Create an instance of the dialog fragment and show it
+		DialogFragment dialog = new BackDialogFragment();
+		dialog.show(getSupportFragmentManager(), "BackDialogFragment");
+	}
+
+	public void showPhoneConfirmDialog() {
+		DialogFragment dialogFragment = PhoneConfirmDialogFragment
+				.newInstance(((TextView) findViewById(R.id.register_phone))
+						.getText().toString());
+		dialogFragment.show(getSupportFragmentManager(),
+				"PhoneConfirmDialogFragment");
+	}
+	
+	public String getPhone() {
+		return ((RegisterPhoneFragment)mRegisterPhoneFragment).getPhone();
 	}
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_register_pre_step:
-			if (mCurrentIndex > 0) {
-				prevStep();
-			}
+			prevStep();
 			break;
 		case R.id.btn_register_next_step:
-			if (mCurrentIndex < mFragmentList.size() - 1) {
-				mCurrentIndex++;
-				initFragment();
-			}
+			nextStep();
 			break;
 		}
 	}
@@ -140,5 +197,28 @@ public class RegisterActivity extends ActionBarActivity implements
 			prevStep();
 		}
 		return false;
+	}
+
+	@Override
+	public void onDialogPositiveClick(DialogFragment dialog) {
+		String tag = dialog.getTag();
+
+		if (tag == "BackDialogFragment") {
+			this.finish();
+		} else if (tag == "PhoneConfirmDialogFragment") {
+			mCurrentIndex++;
+			initFragment();
+		}
+	}
+
+	@Override
+	public void onDialogNegativeClick(DialogFragment dialog) {
+
+	}
+
+	@Override
+	public void next() {
+		mCurrentIndex++;
+		mCurrentFragment = initFragment();
 	}
 }

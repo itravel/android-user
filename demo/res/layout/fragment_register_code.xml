@@ -15,10 +15,10 @@
             android:text="验证码已发送到" />
 
         <TextView
-            android:id="@+id/code_phone_num"
+            android:id="@+id/register_code_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="13412345678" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -27,14 +27,16 @@
         android:orientation="horizontal" >
 
         <EditText
-            android:layout_width="wrap_content"
+            android:id="@+id/register_code"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:hint="请输入验证码" />
 
         <Button
             android:id="@+id/btn_register_code_resend"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:text="重发" />
     </LinearLayout>
 

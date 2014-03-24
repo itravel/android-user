@@ -4,12 +4,36 @@
     android:orientation="vertical"
     android:padding="8dp" >
 
-    <EditText
-        android:id="@+id/register_phone"
-        android:inputType="phone"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="你的手机号码" 
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/register_phone_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:text="+86" />
+
+        <EditText
+            android:id="@+id/register_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="你的手机号码"
+            android:inputType="phone" >
+
+            <requestFocus />
+        </EditText>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="注册即表示你同意 爱侣游用户协议。违反协议的用户可能会被限制使用，请查看协议并约束行为"
+        android:textColor="#ffcccccc" />
 
 </LinearLayout>
