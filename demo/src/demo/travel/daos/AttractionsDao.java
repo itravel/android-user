@@ -37,7 +37,7 @@ public final class AttractionsDao {
 		params.put("longitude", longitude);
 		params.put("start", start);
 		params.put("count", 20);
-		asyncHttpClient.get(Constants.ROOT_URI+ATTRACTIONS_URI, params, asyncHttpResponseHandler);
+		asyncHttpClient.get(Constants.ROOT_URI+AROUND_ATTRACTIONS_URI, params, asyncHttpResponseHandler);
 	}
 	public void getAttractionById(int attractionsId,AsyncHttpResponseHandler asyncHttpResponseHandler){
 		asyncHttpClient.get(Constants.ROOT_URI+ATTRACTIONS_URI+"/"+attractionsId, null, asyncHttpResponseHandler);
