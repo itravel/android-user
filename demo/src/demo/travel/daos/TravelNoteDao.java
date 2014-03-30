@@ -31,17 +31,23 @@ import demo.travel.models.TravelNote;
  * @author william.wangwm
  *	
  */
-// TODO to be single pattern.
-public class TravelNoteDao  {
+public final class TravelNoteDao  {
+	private static final class TravelNoteDaoHolder {
+		private static final TravelNoteDao INSTANCE = new TravelNoteDao();
+	}
 	private static final String TRAVEL_NOTE_URI = "/travelnotes";
 	private final AsyncHttpClient asyncHttpClient = AsyncHttpClientFactory.create();
 	private final ObjectMapper mapper = ObjectMapperFactory.create(); 
-	public ITravelNote create() {
+	
+	public static TravelNoteDao newInstance(){
+		return TravelNoteDaoHolder.INSTANCE;
+	}
+	public static ITravelNote create() {
 		// TODO Auto-generated method stub
 		return new TravelNote();
 	}
 
-	public ITravelNote create(String json) {
+	public static ITravelNote create(String json) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException();
 	}
