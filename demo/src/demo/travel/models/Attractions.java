@@ -75,7 +75,7 @@ public final class Attractions implements IAttractions {
 	}
 
 	@Override
-	public void setCityCode(int arg0) {
+	public void setCityCode(int cityCode) {
 		// TODO Auto-generated method stub
 		this.cityCode = cityCode;
 	}
@@ -106,7 +106,7 @@ public final class Attractions implements IAttractions {
 	}
 
 	@Override
-	public void setName(String arg0) {
+	public void setName(String name) {
 		// TODO Auto-generated method stub
 		this.name = name;
 	}
