@@ -35,7 +35,7 @@ public final class TravelNoteDao  {
 	private static final class TravelNoteDaoHolder {
 		private static final TravelNoteDao INSTANCE = new TravelNoteDao();
 	}
-	private static final String TRAVEL_NOTE_URI = "/travelnotes";
+	private static final String TRAVEL_NOTE_URI = "/services/travelnotes";
 	private final AsyncHttpClient asyncHttpClient = AsyncHttpClientFactory.create();
 	private final ObjectMapper mapper = ObjectMapperFactory.create(); 
 	

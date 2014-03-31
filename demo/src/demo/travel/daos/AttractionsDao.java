@@ -18,8 +18,8 @@ public final class AttractionsDao {
 		private static final AttractionsDao INSTANCE = new AttractionsDao();
 	}
 	
-	private static final String ATTRACTIONS_URI = "/attractions";
-	private static final String AROUND_ATTRACTIONS_URI = "/around/attractions";
+	private static final String ATTRACTIONS_URI = "/services/attractions";
+	private static final String AROUND_ATTRACTIONS_URI = "/services/around/attractions";
 	private final AsyncHttpClient asyncHttpClient = AsyncHttpClientFactory.create();
 	private final ObjectMapper mapper = ObjectMapperFactory.create(); 
 	
