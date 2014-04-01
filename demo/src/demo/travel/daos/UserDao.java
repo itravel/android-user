@@ -26,7 +26,6 @@ public final class UserDao {
 	private static final class UserDaoHolder {
 		private static final UserDao INSTANCE = new UserDao();
 	}
-	private static final String USER_URI = "/services/users";
 	private static final String AUTH_URI = "/auth/users";
 	private final ObjectMapper mapper = ObjectMapperFactory.create(); 
 	private final AsyncHttpClient asyncHttpClient = AsyncHttpClientFactory.create();
@@ -58,11 +57,14 @@ public final class UserDao {
 		}
 	}
 
-	public void valiate(String username, String password,
+	public void validatePhone(int cellphone,AsyncHttpResponseHandler asyncHttpResponseHandler){
+		asyncHttpClient.get(Constants.ROOT_URI+AUTH_URI+"/phone/"+cellphone, null, asyncHttpResponseHandler);
+	}
+	public void login(String username, String password,
 			AsyncHttpResponseHandler asyncHttpResponseHandler) {
 		RequestParams params = new RequestParams();
 		params.put("username", username);
 		params.put("password", password);
-		asyncHttpClient.get(Constants.ROOT_URI+USER_URI, params, asyncHttpResponseHandler);
+		asyncHttpClient.get(Constants.ROOT_URI+AUTH_URI, params, asyncHttpResponseHandler);
 	}
 }
