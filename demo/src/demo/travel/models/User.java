@@ -1,5 +1,7 @@
 package demo.travel.models;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.itravel.server.interfaces.dal.IUser;
 
 public class User implements IUser{
@@ -146,6 +148,11 @@ public class User implements IUser{
 	public void setWeibo(String weibo) {
 		// TODO Auto-generated method stub
 		this.weibo = weibo;
+	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return ToStringBuilder.reflectionToString(this);
 	}
 
 	

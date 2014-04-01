@@ -39,6 +39,9 @@ public final class TravelNoteDao  {
 	private final AsyncHttpClient asyncHttpClient = AsyncHttpClientFactory.create();
 	private final ObjectMapper mapper = ObjectMapperFactory.create(); 
 	
+	private TravelNoteDao(){
+		
+	}
 	public static TravelNoteDao newInstance(){
 		return TravelNoteDaoHolder.INSTANCE;
 	}

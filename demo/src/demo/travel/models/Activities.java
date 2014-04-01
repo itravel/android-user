@@ -1,52 +1,69 @@
 package demo.travel.models;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.google.common.base.Joiner;
-import com.google.common.base.Splitter;
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
-import com.itravel.server.interfaces.dal.ITravelNote;
+import com.itravel.server.interfaces.dal.IActivities;
+import com.itravel.server.interfaces.dal.IUser;
 
-public class TravelNote implements ITravelNote {
+public class Activities implements IActivities {
 
-	private String userName;
-	private String userAvatar;
-	private String title;
-	private int province;
+	private String pictures;
 	private double longitude;
+	private String name;
+	private String userName;
+	private long userId;
+	private String userAvatar;
+	private int status;
+	private Date startTime;
 	private double latitude;
 	private long id;
-	private String destination;
-	private String content;
-	private int city;
-	private long userId;
-	private Collection<String> pictures = Sets.newHashSet();
+	private Date endTime;
+	private String description;
+	private Collection<IUser> users = Sets.newConcurrentHashSet();
 
 	@Override
-	public void addPicture(String picture) {
+	public void addActivitiesPic(String pic) {
 		// TODO Auto-generated method stub
-		this.pictures.add(picture);
+		Collection<String> pics = this.getActivitiesPics();
+		pics.add(pic);
+		this.pictures = Joiner.on(",").join(pics);
 	}
 
 	@Override
-	public int getCity() {
+	public void addActivitiesPics(String... pics) {
 		// TODO Auto-generated method stub
-		return this.city;
+		for(String pic:pics){
+			this.addActivitiesPic(pic);
+		}
 	}
 
 	@Override
-	public String getContent() {
+	public void addUser(IUser user) {
 		// TODO Auto-generated method stub
-		return this.content;
+		this.users.add(user);
 	}
 
 	@Override
-	public String getDestination() {
+	public Collection<String> getActivitiesPics() {
 		// TODO Auto-generated method stub
-		return this.destination;
+		return null;
+	}
+
+	@Override
+	public String getDescription() {
+		// TODO Auto-generated method stub
+		return this.description;
+	}
+
+	@Override
+	public Date getEndTime() {
+		// TODO Auto-generated method stub
+		return this.endTime;
 	}
 
 	@Override
@@ -56,20 +73,33 @@ public class TravelNote implements ITravelNote {
 	}
 
 	@Override
-	public Collection<String> getPictures() {
-		return this.pictures;
+	public double getLatitude() {
+		// TODO Auto-generated method stub
+		return this.latitude;
 	}
 
 	@Override
-	public int getProvince() {
+	public double getLongitude() {
 		// TODO Auto-generated method stub
-		return this.province;
+		return this.longitude;
 	}
 
 	@Override
-	public String getTitle() {
+	public String getName() {
 		// TODO Auto-generated method stub
-		return this.title;
+		return this.name;
+	}
+
+	@Override
+	public Date getStartTime() {
+		// TODO Auto-generated method stub
+		return this.startTime;
+	}
+
+	@Override
+	public int getStatus() {
+		// TODO Auto-generated method stub
+		return this.status;
 	}
 
 	@Override
@@ -91,21 +121,21 @@ public class TravelNote implements ITravelNote {
 	}
 
 	@Override
-	public void setCity(int city) {
+	public Collection<IUser> getUsers() {
 		// TODO Auto-generated method stub
-		this.city = city;
+		return this.users ;
 	}
 
 	@Override
-	public void setContent(String content) {
+	public void setDescription(String description) {
 		// TODO Auto-generated method stub
-		this.content = content;
+		this.description = description;
 	}
 
 	@Override
-	public void setDestination(String destination) {
+	public void setEndTime(Date endTime) {
 		// TODO Auto-generated method stub
-		this.destination = destination;
+		this.endTime = endTime;
 	}
 
 	@Override
@@ -123,25 +153,25 @@ public class TravelNote implements ITravelNote {
 	@Override
 	public void setLongitude(double longitude) {
 		// TODO Auto-generated method stub
-		this.longitude = longitude;
+		this.longitude  = longitude;
 	}
 
 	@Override
-	public void setPictures(String... pics) {
+	public void setName(String name) {
 		// TODO Auto-generated method stub
-		this.pictures = Sets.newHashSet(pics);
+		this.name = name;
 	}
 
 	@Override
-	public void setProvince(int province) {
+	public void setStartTime(Date startTime) {
 		// TODO Auto-generated method stub
-		this.province = province;
+		this.startTime = startTime;
 	}
 
 	@Override
-	public void setTitle(String title) {
+	public void setStatus(int status) {
 		// TODO Auto-generated method stub
-		this.title = title;
+		this.status = status;
 	}
 
 	@Override
@@ -161,9 +191,17 @@ public class TravelNote implements ITravelNote {
 		// TODO Auto-generated method stub
 		this.userName = userName;
 	}
+
+	@Override
+	public void setUsers(Collection<IUser> users) {
+		// TODO Auto-generated method stub
+		this.users = Sets.newConcurrentHashSet(users);
+	}
+	
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
 		return ToStringBuilder.reflectionToString(this);
 	}
+
 }

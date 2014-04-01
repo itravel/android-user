@@ -2,6 +2,8 @@ package demo.travel.models;
 
 import java.util.Collection;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.google.common.base.Joiner;
 import com.google.common.collect.Sets;
 import com.itravel.server.interfaces.dal.IAttractions;
@@ -121,6 +123,11 @@ public final class Attractions implements IAttractions {
 		Collection<String> pics = this.getPictures();
 		pics.add(picture);
 		this.pictures = Joiner.on(",").join(pics);
+	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return ToStringBuilder.reflectionToString(this);
 	}
 
 }

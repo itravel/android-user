@@ -29,16 +29,18 @@ public final class UserDao {
 	private static final String AUTH_URI = "/auth/users";
 	private final ObjectMapper mapper = ObjectMapperFactory.create(); 
 	private final AsyncHttpClient asyncHttpClient = AsyncHttpClientFactory.create();
+	
+	private UserDao(){
+		
+	}
+	
+	
 	public static UserDao getInstance(){
 		return UserDaoHolder.INSTANCE;
 	}
 	
 	public IUser create(){
 		return new User();
-	}
-	
-	private UserDao(){
-		
 	}
 	
 	public void save(IUser user,
