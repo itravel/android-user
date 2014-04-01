@@ -33,7 +33,13 @@ public final class AttractionsDao {
 	
 	private AttractionsDao () {
 	}
-	
+	/**
+	 * 根据经纬度查询周边景点
+	 * @param latitude
+	 * @param longitude
+	 * @param start
+	 * @param asyncHttpResponseHandler
+	 */
 	public void getAttractionsByLatLnt(double latitude,double longitude,int start,AsyncHttpResponseHandler asyncHttpResponseHandler){
 		RequestParams params = new RequestParams();
 		params.put("latitude", latitude);
@@ -42,9 +48,20 @@ public final class AttractionsDao {
 		params.put("count", 20);
 		asyncHttpClient.get(Constants.ROOT_URI+AROUND_ATTRACTIONS_URI, params, asyncHttpResponseHandler);
 	}
+	/**
+	 * 根据景点ID查询景点信息
+	 * @param attractionsId
+	 * @param asyncHttpResponseHandler
+	 */
 	public void getAttractionById(int attractionsId,AsyncHttpResponseHandler asyncHttpResponseHandler){
 		asyncHttpClient.get(Constants.ROOT_URI+ATTRACTIONS_URI+"/"+attractionsId, null, asyncHttpResponseHandler);
 	}
+	/**
+	 * 根据城市代码查询景点信息
+	 * @param city
+	 * @param start
+	 * @param asyncHttpResponseHandler
+	 */
 	public void getAttractionsByCity(int city,int start,AsyncHttpResponseHandler asyncHttpResponseHandler){
 		RequestParams params = new RequestParams();
 		params.put("queryBy", "city");
