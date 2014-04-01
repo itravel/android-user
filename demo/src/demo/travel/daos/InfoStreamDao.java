@@ -16,7 +16,7 @@ public final class InfoStreamDao {
 	
 	private final AsyncHttpClient asyncHttpClient = AsyncHttpClientFactory.create();
 	private final ObjectMapper mapper = ObjectMapperFactory.create(); 
-	private static final String INFOSTREAM_URI = "/services/infostream";
+	private static final String INFOSTREAM_URI = "/services/infostreams";
 	private InfoStreamDao(){
 		
 	}
