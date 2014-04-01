@@ -23,13 +23,16 @@ public final class AttractionsDao {
 	private final AsyncHttpClient asyncHttpClient = AsyncHttpClientFactory.create();
 	private final ObjectMapper mapper = ObjectMapperFactory.create(); 
 	
-//	public static IAttractions create(){
-//		return new Attractions();
-//	}
-//	
-//	public static IAttractions create(String json){
-//		throw new UnsupportedOperationException();
-//	}
+	public static IAttractions create(){
+		return new Attractions();
+	}
+	
+	public static IAttractions create(String json){
+		throw new UnsupportedOperationException();
+	}
+	
+	private AttractionsDao () {
+	}
 	
 	public void getAttractionsByLatLnt(double latitude,double longitude,int start,AsyncHttpResponseHandler asyncHttpResponseHandler){
 		RequestParams params = new RequestParams();

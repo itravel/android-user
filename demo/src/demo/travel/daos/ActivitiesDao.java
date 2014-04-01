@@ -38,12 +38,13 @@ public final class ActivitiesDao {
 		return ActivitiesDaoHolder.INSTANCE;
 	}
 	
-	public IActivities create(){
+	public static IActivities create(){
 		return new Activities();
 	}
 	
-	public IActivities create(String json){
+	public static IActivities create(String json){
 		try {
+			final ObjectMapper mapper = ObjectMapperFactory.create();
 			return mapper.readValue(json, Activities.class);
 		} catch (JsonParseException e) {
 			// TODO Auto-generated catch block

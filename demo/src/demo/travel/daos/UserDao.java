@@ -39,7 +39,7 @@ public final class UserDao {
 		return UserDaoHolder.INSTANCE;
 	}
 	
-	public IUser create(){
+	public static IUser create(){
 		return new User();
 	}
 	
