@@ -29,6 +29,7 @@ public final class ActivitiesDao {
 	private final AsyncHttpClient asyncHttpClient = AsyncHttpClientFactory.create();
 	private final ObjectMapper mapper = ObjectMapperFactory.create(); 
 	private static final String ACTIVITIES_URI = "/services/activites";
+	private static final String AROUND_ACTIVITIES_URI = "/services/around/activities";
 	/*============================================================*/
 	private ActivitiesDao(){
 		
@@ -63,6 +64,21 @@ public final class ActivitiesDao {
 		params.put("start", start);
 		params.put("count", count);
 		asyncHttpClient.get(Constants.ROOT_URI+ACTIVITIES_URI, params, asyncHttpResponseHandler);
+	}
+	/**
+	 * 按照经纬度搜索
+	 * @param latitude
+	 * @param longitude
+	 * @param start
+	 * @param asyncHttpResponseHandler
+	 */
+	public void getAttractionsByLatLnt(double latitude,double longitude,int start,AsyncHttpResponseHandler asyncHttpResponseHandler){
+		RequestParams params = new RequestParams();
+		params.put("latitude", latitude);
+		params.put("longitude", longitude);
+		params.put("start", start);
+		params.put("count", 20);
+		asyncHttpClient.get(Constants.ROOT_URI+AROUND_ACTIVITIES_URI, params, asyncHttpResponseHandler);
 	}
 	
 	public void save(IActivities activities,AsyncHttpResponseHandler asyncHttpResponseHandler){
