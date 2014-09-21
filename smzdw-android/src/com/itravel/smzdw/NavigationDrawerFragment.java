@@ -1,5 +1,8 @@
 package com.itravel.smzdw;
 
+import com.itravel.smzdw.adapters.NaviationMenuItemAdapter;
+import com.itravel.smzdw.dao.NavigationMenuItem;
+
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
@@ -99,27 +102,25 @@ public class NavigationDrawerFragment extends Fragment implements OnBackStackCha
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-//		mDrawerListView = (ListView) inflater.inflate(
-//				R.layout.fragment_navigation_drawer, container, false);
-//		mDrawerListView
-//				.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//					@Override
-//					public void onItemClick(AdapterView<?> parent, View view,
-//							int position, long id) {
-//						selectItem(position);
-//					}
-//				});
-//		mDrawerListView.setAdapter(new ArrayAdapter<String>(getActionBar()
-//				.getThemedContext(),
-//				android.R.layout.simple_list_item_activated_1,
-//				android.R.id.text1, new String[] {
-//						getString(R.string.title_section1),
-//						getString(R.string.title_section2),
-//						getString(R.string.title_section3), }));
-//		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
+		View rootView = inflater.inflate(R.layout.fragment_navigation_drawer, container);
+		mDrawerListView = (ListView) rootView.findViewById(R.id.navigation_left);
+		mDrawerListView
+				.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+					@Override
+					public void onItemClick(AdapterView<?> parent, View view,
+							int position, long id) {
+						selectItem(position);
+					}
+				});
+		mDrawerListView.setAdapter(new NaviationMenuItemAdapter(inflater.getContext(),
+				R.layout.navigation_left_menu_layout, new NavigationMenuItem[] {
+						new NavigationMenuItem(R.string.fa_search, "探索"),
+						new NavigationMenuItem(R.string.fa_paw, "发现"),
+						new NavigationMenuItem(R.string.fa_gear, "设置"),
+						new NavigationMenuItem(R.string.fa_envolope, "反馈")}));
+		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 //		return mDrawerListView;
 		
-		View rootView = inflater.inflate(R.layout.fragment_navigation_drawer, container);
 		
 		return rootView;
 	}

@@ -1,15 +1,12 @@
 package com.itravel.smzdw.adapters;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -17,16 +14,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 import com.itravel.smzdw.R;
+import com.itravel.smzdw.dao.ActivityImageCache;
 import com.itravel.smzdw.dao.ActivitySimple;
+import com.itravel.smzdw.dao.ImageDao;
 
 public class ActivityAdapter extends ArrayAdapter<ActivitySimple> {
+	private class ViewHolder {
+		private ImageView image;
+		private TextView title;
+		private TextView scenerySpot;
+	}
+	private static final ExecutorService service = Executors.newFixedThreadPool(10);
 	private List<ActivitySimple> items;
 //	private ImageView image = null;
+	private final ActivityImageCache imageCache = ActivityImageCache.getInstance();
 	public ActivityAdapter(Context context, int textViewResourceId,
 			List<ActivitySimple> items) {
 		super(context, textViewResourceId, items);
@@ -36,31 +44,42 @@ public class ActivityAdapter extends ArrayAdapter<ActivitySimple> {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		View v = convertView;
+//		View v = convertView;
 //		View v = null;
+		ViewHolder holder;
 		Log.i("com.itravel.smzdw", String.valueOf(position));
-		if (v == null) {
+		if (convertView == null) {
 			LayoutInflater vi = (LayoutInflater) super.getContext()
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			v = vi.inflate(R.layout.activity_list_row, null);
-			
+			convertView = vi.inflate(R.layout.activity_list_row, null);
+			holder = new ViewHolder();
+			ImageView image = (ImageView) convertView.findViewById(R.id.activity_image);
+			TextView title = (TextView) convertView.findViewById(R.id.activity_title);
+			TextView scenerySpot  = (TextView) convertView.findViewById(R.id.activity_sceney_spot);
+			holder.image = image;
+			holder.title = title;
+			holder.scenerySpot = scenerySpot;
+			convertView.setTag(holder);
 		}
-		ActivitySimple activity = this.items.get(position);
-		ImageView image = (ImageView) v.findViewById(R.id.activity_image);
-		new ImageLoadTask(image).execute(activity.getImage());
 		
-		TextView title = (TextView) v.findViewById(R.id.activity_title);
-		title.setText(activity.getTitle());
+		else {
+			holder = (ViewHolder) convertView.getTag();
+		}
+		holder.image.setImageResource(R.drawable.act_1);
+		ActivitySimple activity = this.items.get(position);
+		if(activity.getImages().size() > 0){
+			
+			new ImageLoadTask(holder.image).executeOnExecutor(service,activity.getImages().get(0));
+		}
+		
+		holder.title.setText(activity.getTitle());
 		
 		Typeface font = Typeface.createFromAsset( this.getContext().getAssets(), "fontawesome-webfont.ttf" );
-//		TextView button = (TextView)v.findViewById( R.id.like );
-//		button.setTypeface(font);
-		TextView scenerySpotLabel = (TextView) v.findViewById(R.id.activity_sceney_spot_label);
+		TextView scenerySpotLabel = (TextView) convertView.findViewById(R.id.activity_sceney_spot_label);
 		scenerySpotLabel.setTypeface(font);
-		TextView scenerySpot  = (TextView) v.findViewById(R.id.activity_sceney_spot);
-		scenerySpot.setText(activity.getScenerySpot());
+		holder.scenerySpot.setText(activity.getScenerySpot());
 
-		return v;
+		return convertView;
 	}
 	
 	private class ImageLoadTask extends AsyncTask<String, Void, Bitmap> {
@@ -74,17 +93,29 @@ public class ActivityAdapter extends ArrayAdapter<ActivitySimple> {
 		@Override
 		protected Bitmap doInBackground(String... params) {
 			// TODO Auto-generated method stub
-			Bitmap map = null;
+			Bitmap map  = null;
+			try {
+				if(params==null || params[0] == null){
+					return null;
+				}
+				map = imageCache.get(params[0]);
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
            
-                map = downloadImage("http://115.28.129.120"+params[0]);
             
             return map;
 		}
 		@Override
         protected void onPostExecute(Bitmap result) {
+			if(result==null){
+				image.setImageResource(R.drawable.act_1);
+				return ;
+			}
             image.setImageBitmap(result);
         }
-		private Bitmap downloadImage(String url) {
+	/*	private Bitmap downloadImage(String url) {
             Bitmap bitmap = null;
             InputStream stream = null;
             BitmapFactory.Options bmOptions = new BitmapFactory.Options();
@@ -120,7 +151,7 @@ public class ActivityAdapter extends ArrayAdapter<ActivitySimple> {
                 ex.printStackTrace();
             }
             return stream;
-        }
+        }*/
     
 	}
 }

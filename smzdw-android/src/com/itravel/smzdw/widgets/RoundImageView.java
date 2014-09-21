@@ -36,7 +36,7 @@ public class RoundImageView extends ImageView {
     public RoundImageView(Context context, AttributeSet attrs) {  
         super(context, attrs);  
         mContext = context;  
-//        setCustomAttributes(attrs);  
+        setCustomAttributes(attrs);  
     }  
   
     public RoundImageView(Context context, AttributeSet attrs, int defStyle) {  
@@ -45,7 +45,11 @@ public class RoundImageView extends ImageView {
 //        setCustomAttributes(attrs);  
     }  
   
-//    private void setCustomAttributes(AttributeSet attrs) {  
+    private void setCustomAttributes(AttributeSet attrs) {  
+    	this.mBorderThickness = 4;
+    	this.mBorderOutsideColor = 0xffffffff;
+    	this.mBorderInsideColor = 0xffeeeed1;
+    			
 //        TypedArray a = mContext.obtainStyledAttributes(attrs,  
 //                R.styleable.roundedimageview);  
 //        mBorderThickness = a.getDimensionPixelSize(  
@@ -55,7 +59,7 @@ public class RoundImageView extends ImageView {
 //                        defaultColor);  
 //        mBorderInsideColor = a.getColor(  
 //                R.styleable.roundedimageview_border_inside_color, defaultColor);  
-//    }  
+    }  
 //  
     @Override  
     protected void onDraw(Canvas canvas) {  

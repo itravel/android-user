@@ -17,6 +17,7 @@ import android.util.Log;
 
 public final class HttpClientHelper {
 	private final HttpClient client = new DefaultHttpClient();
+	private static final String HOST = "http://115.28.129.120";
 	
 	private static final class HttpClientHelperHolder {
 		private static HttpClientHelper instance = new HttpClientHelper();
@@ -35,10 +36,10 @@ public final class HttpClientHelper {
 			HttpGet httpGet = null;
 			if(queryParams!=null){
 				String query = URLEncodedUtils.format(queryParams, HTTP.UTF_8);
-				httpGet = new HttpGet("http://115.28.129.120"+requestPath+"?"+query);
+				httpGet = new HttpGet(HOST+requestPath+"?"+query);
 			}
 			else {
-				httpGet = new HttpGet("http://115.28.129.120"+requestPath);
+				httpGet = new HttpGet(HOST+requestPath);
 			}
 			return this.client.execute(httpGet);
 		} catch (ClientProtocolException e) {

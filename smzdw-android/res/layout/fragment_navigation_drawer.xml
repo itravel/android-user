@@ -42,14 +42,6 @@
                 android:textSize="16dp"
                 android:textStyle="bold"
                 />
-            <TextView 
-                android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-                android:text="guest1234@smzdw.com"
-                android:textColor="#666666"
-                android:textSize="14dp"
-                android:textStyle="normal"
-                />
             
             
         </LinearLayout>
@@ -62,14 +54,31 @@
         android:layout_marginRight="10dp"
         android:background="#cccccc"
         android:orientation="vertical" />
-
+    
+    <ListView 
+        android:id="@+id/navigation_left"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:dividerHeight="0px"
+        android:divider="#ffffff"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:footerDividersEnabled="false"
+        
+        >
+        
+        
+        
+        
+        
+    </ListView>
+    
+<!-- 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="32dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+       	android:layout_margin="16dp"
         
         android:orientation="horizontal" >
 
@@ -96,10 +105,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="32dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginLeft="10dp"
-  android:layout_marginRight="10dp"
+        	android:layout_margin="16dp"
         android:orientation="horizontal" >
 
         <com.itravel.smzdw.widgets.TypeFontTextView
@@ -133,10 +139,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="32dp"
-                android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginLeft="10dp"
-     android:layout_marginRight="10dp"
+                	android:layout_margin="16dp"
         android:orientation="horizontal" >
 
         <com.itravel.smzdw.widgets.TypeFontTextView
@@ -162,10 +165,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="32dp"
-               android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginLeft="10dp"
-       android:layout_marginRight="10dp"
+              	android:layout_margin="16dp"
         android:orientation="horizontal" >
 
         <com.itravel.smzdw.widgets.TypeFontTextView
@@ -186,6 +186,6 @@
             android:text="反馈"
             android:textColor="#111111"
             android:textSize="16dp" />
-    </LinearLayout>
+    </LinearLayout> -->
 
 </LinearLayout>

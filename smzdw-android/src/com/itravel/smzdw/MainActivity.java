@@ -77,7 +77,7 @@ public class MainActivity extends Activity implements
 	public void onSectionAttached(int number) {
 		switch (number) {
 		case 1:
-			mTitle = getString(R.string.title_section1);
+			mTitle = getString(R.string.navigation_menu_search);
 			break;
 		case 2:
 			mTitle = getString(R.string.title_section2);

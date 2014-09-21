@@ -28,13 +28,15 @@ import com.itravel.smzdw.dao.ActivitySimple;
 public class ActivityListFragment extends ListFragment {
 	private List<ActivitySimple> activities = new CopyOnWriteArrayList<ActivitySimple>();
 	private ActivityAdapter adapter;
+	
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // 设置ListFragment默认的ListView，即@id/android:list
         this.adapter = new ActivityAdapter(getActivity(),R.layout.activity_list_row, activities);
         setListAdapter(this.adapter);
-        new ActivityListGetTask().execute(0,5);
+        new ActivityListGetTask().execute(0,10);
         setHasOptionsMenu(true);
     }
 	
@@ -47,8 +49,8 @@ public class ActivityListFragment extends ListFragment {
 			@Override
 			public void onScrollStateChanged(AbsListView view, int scrollState) {
 				// TODO Auto-generated method stub
-				if(this.readyLoad){
-					new ActivityListGetTask().execute(activities.size()-1,5);
+				if(this.readyLoad&&scrollState==2){
+					new ActivityListGetTask().execute(activities.size(),10);
 					this.readyLoad = false;
 				}
 			}
@@ -57,7 +59,7 @@ public class ActivityListFragment extends ListFragment {
 			public void onScroll(AbsListView view, int firstVisibleItem,
 					int visibleItemCount, int totalItemCount) {
 				// TODO Auto-generated method stub
-				 if (firstVisibleItem + visibleItemCount >= totalItemCount-1 && totalItemCount > 0) {
+				 if (firstVisibleItem + visibleItemCount == totalItemCount-2 && totalItemCount > 0) {
 					 this.readyLoad = true;
 				 }
 			}});

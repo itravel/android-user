@@ -1,24 +1,28 @@
 package com.itravel.smzdw.fragments;
 
+import java.util.concurrent.ExecutionException;
+
 import android.app.Fragment;
+import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.itravel.smzdw.R;
 import com.itravel.smzdw.dao.Activity;
 import com.itravel.smzdw.dao.ActivityDao;
+import com.itravel.smzdw.dao.ActivityImageCache;
 
 public class ActivityDetailFragment extends Fragment {
-	
+	private final ActivityImageCache imageCache = ActivityImageCache.getInstance();
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -42,7 +46,6 @@ public class ActivityDetailFragment extends Fragment {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
 		int id = item.getItemId();
-		Log.i("com.itravel.smzdw", String.valueOf("---------------"+id));
 		if(id == android.R.id.home){
 			this.getFragmentManager().popBackStack();
 			return true;
@@ -56,7 +59,7 @@ public class ActivityDetailFragment extends Fragment {
 		this.getActivity().getActionBar().setTitle("");
 	}
 	private class ActivityDetailGetTask extends AsyncTask<Long,Void,Activity> {
-
+		
 		private View rootView;
 
 		public ActivityDetailGetTask(View rootView) {
@@ -74,8 +77,23 @@ public class ActivityDetailFragment extends Fragment {
 
 		@Override
 		protected void onPostExecute(Activity result) {
-			Log.i("com.itravel.smzdw", result.toString());
+//			Log.i("com.itravel.smzdw", result.toString());
 //			super.onPostExecute(result);
+			ImageView activityImage = (ImageView) this.rootView.findViewById(R.id.activity_image);
+			if(result.getImage()!=null&&!result.getImage().isEmpty()){
+				Bitmap image;
+				try {
+					image = imageCache.get(result.getImage());
+					activityImage.setImageBitmap(image);
+				} catch (ExecutionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+			TextView title = (TextView) this.rootView.findViewById(R.id.activity_detail_title);
+			title.setText(result.getTitle());
+			
 			Typeface font = Typeface.createFromAsset( this.rootView.getContext().getAssets(), "fontawesome-webfont.ttf" );
 			TextView start_end_time_label = (TextView) this.rootView.findViewById(R.id.start_end_time_label);
 			start_end_time_label.setTypeface(font);
@@ -85,7 +103,15 @@ public class ActivityDetailFragment extends Fragment {
 			TextView scenerySpotLabel = (TextView) this.rootView.findViewById(R.id.activity_detail_scenery_spot_label);
 			scenerySpotLabel.setTypeface(font);	
 			TextView scenerySpot = (TextView) this.rootView.findViewById(R.id.activity_detail_scenery_spot);
-			scenerySpot.setText(result.getScenerySpot());	
+			scenerySpot.setText(result.getScenerySpot());
+			
+			TextView activityDesc = (TextView) this.rootView.findViewById(R.id.activity_description);
+			activityDesc.setText(result.getContent());
+			
+			TextView tips = (TextView) this.rootView.findViewById(R.id.activity_tips);
+			tips.setText(result.getTips());
+			
+			
 			
 		}
 		

@@ -18,12 +18,14 @@ public class Activity {
 	private String contact;
 	private String sponsor;
 	private String recommender;
-	private String journey;
+	private String image;
+	private List<ActivityJourney> journey;
+	
 	private String tips;
-	private List<String> images;
+//	private List<String> images;
 	@Override
 	public String toString() {
-		return MoreObjects.toStringHelper(this).add("id", id).add("title", title).add("images", images).toString();
+		return MoreObjects.toStringHelper(this).add("id", id).add("title", title).add("journey", journey).toString();
 	}
 	public long getId() {
 		return id;
@@ -91,22 +93,23 @@ public class Activity {
 	public void setRecommender(String recommender) {
 		this.recommender = recommender;
 	}
-	public String getJourney() {
-		return journey;
-	}
-	public void setJourney(String journey) {
-		this.journey = journey;
-	}
+	
 	public String getTips() {
 		return tips;
 	}
 	public void setTips(String tips) {
 		this.tips = tips;
 	}
-	public List<String> getImages() {
-		return images;
+	public String getImage() {
+		return image;
 	}
-	public void setImages(List<String> images) {
-		this.images = images;
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public List<ActivityJourney> getJourney() {
+		return journey;
+	}
+	public void setJourney(List<ActivityJourney> journey) {
+		this.journey = journey;
 	}
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/navigation_left_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="22dp"
+    android:paddingBottom="22dp"
+    android:orientation="horizontal" >
+
+    <com.itravel.smzdw.widgets.TypeFontTextView
+        android:id="@+id/navigation_left_item_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:textColor="#333333"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/navigation_left_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:textColor="#333333"
+        android:textSize="18sp" />
+
+</LinearLayout>

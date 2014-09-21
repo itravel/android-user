@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     android:layout_gravity="fill_vertical" >
 
     <ScrollView
@@ -23,7 +24,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="250dp"
                     android:contentDescription="acttivity"
-                    android:scaleType="center"
+                     android:scaleType="fitXY"
                     android:src="@drawable/act_1" />
 
                 <com.itravel.smzdw.widgets.TypeFontTextView
@@ -45,14 +46,44 @@
                     android:textColor="#ffff"
                     android:text="@string/fa_heart_o"
                     android:textSize="24dp" />
+                <com.itravel.smzdw.widgets.RoundImageView
+        android:id="@+id/activity_sponsor"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="220dp"
+        android:src="@drawable/portrait_1" />
                 
             </RelativeLayout>
+            
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:orientation="vertical"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp" >
+
+                <TextView
+                    android:id="@+id/activity_detail_title"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="fdfd"
+                    android:textColor="#333333"
+                    android:textSize="24sp" />
+                
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="64dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:orientation="vertical"
-                android:padding="12dp" >
+                android:paddingBottom="18dp"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:paddingTop="8dp" >
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -97,26 +128,28 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
+          <!--   <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:background="#cccccc"
-                android:orientation="vertical" />
+                android:orientation="vertical" /> -->
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:background="#eeeed1"
                 android:orientation="vertical" >
 
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="30dp"
                     android:gravity="center"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginBottom="20dp"
                     android:text="描述"
-                    android:textSize="24dp"
+                    android:textSize="20dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -125,60 +158,129 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
                     android:text="    活动为半自助穿越旅行，全程包车（大巴+越野车）深入草原腹地，低强度，随性走，自在摄影，氛围轻松，深度体验。主要景点：塞罕坝、神龙潭、七星湖、御道口大峡谷穿越、桃山湖；越野车行车线路-蘑菇场、康熙湖、十里画廊、放羊滩、葫芦峪、沙湖、杨树背、四方城、北沟北、余家店、成吉思汗山、五彩山；将军泡子；影视基地；百草敖包。浑善达克沙地公园/姑娘湖/汇宗寺。"
-                    android:textSize="16dp" />
+                    android:textSize="14dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="#cccccc"
-                android:orientation="vertical" />
-
-            <LinearLayout
-                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                 android:background="#eeeed1"
                 android:orientation="vertical" >
 
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="30dp"
                     android:gravity="center"
-                    android:text="行程"
-                    android:textSize="24dp"
+                        android:layout_marginTop="48dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="行程安排"
+                    android:textSize="20dp"
                     android:textStyle="bold" />
-
-                <TextView
+                <LinearLayout 
+                    android:layout_width="fill_parent"
+                	android:layout_height="wrap_content"
+                	android:layout_marginTop="12dp"
+               	 	android:orientation="horizontal" >
+                     <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:contentDescription="acttivity"
+                    android:scaleType="center"
+                    android:src="@drawable/clock" />
+                    
+                     <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:gravity="center"
+                    android:text="8:20 - 8:50    西直门地铁站A出口集合"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+                    
+                </LinearLayout>
+				 <TextView
                     android:id="@+id/activity_journey"
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="12dp"
-                    android:text="    活动为半自助穿越旅行，全程包车（大巴+越野车）深入草原腹地，低强度，随性走，自在摄影，氛围轻松，深度体验。主要景点：塞罕坝、神龙潭、七星湖、御道口大峡谷穿越、桃山湖；越野车行车线路-蘑菇场、康熙湖、十里画廊、放羊滩、葫芦峪、沙湖、杨树背、四方城、北沟北、余家店、成吉思汗山、五彩山；将军泡子；影视基地；百草敖包。浑善达克沙地公园/姑娘湖/汇宗寺。"
-                    android:textSize="16dp" />
+                    android:layout_marginLeft="48dp"
+                    android:text="三个出发时间可选，乘车地点位于白金汉宫大街的Golden Tours办公室。坐上通体装饰着《哈利•波特》海报的双层巴士，听着车载电视的观光导览，前往位于伦敦郊区华纳兄制片厂《哈利·波特》系列电影的拍摄地，不禁产生一种大家其实都是去往霍格沃茨学校的感觉。"
+                    android:textSize="14dp" />
+				 
+				 <LinearLayout 
+                    android:layout_width="fill_parent"
+                	android:layout_height="wrap_content"
+                	android:layout_marginTop="12dp"
+               	 	android:orientation="horizontal" >
+                     <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:contentDescription="acttivity"
+                    android:scaleType="center"
+                    android:src="@drawable/clock" />
+                    
+                     <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:gravity="center"
+                    android:text="9:00 - 11:30    乘坐旅游大巴前往十渡"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+                    
+                </LinearLayout>
+				 <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="12dp"
+                    android:layout_marginLeft="48dp"
+                    android:text="到了片场，就会听到振奋人心的主题曲音乐，让所有人都沉浸在哈利波特的魔法氛围里。对于哈利波特迷来说，这绝对是伦敦最大的诱惑。哈利波特系列电影大多数场景都是在这个离伦敦30公里的摄影棚中拍摄。在这里，你可以看到霍格沃茨的食堂，起居室，教室…...还有电影中的道具以及电影拍摄背后的秘密。"
+                    android:textSize="14dp" />
+				 
+				 
+				 <LinearLayout 
+                    android:layout_width="fill_parent"
+                	android:layout_height="wrap_content"
+                	android:layout_marginTop="12dp"
+               	 	android:orientation="horizontal" >
+                     <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:contentDescription="acttivity"
+                    android:scaleType="center"
+                    android:src="@drawable/clock" />
+                    
+                     <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:gravity="center"
+                    android:text="11:30 - 17:50    十渡竹排钓鱼自由活动"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+                    
+                </LinearLayout>
+				 <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="12dp"
+                    android:layout_marginLeft="48dp"
+                    android:text="三个出发时间可选，乘车地点位于白金汉宫大街的Golden Tours办公室。坐上通体装饰着《哈利•波特》海报的双层巴士，听着车载电视的观光导览，前往位于伦敦郊区华纳兄制片厂《哈利·波特》系列电影的拍摄地，不禁产生一种大家其实都是去往霍格沃茨学校的感觉。"
+                    android:textSize="14dp" />
+               
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="#cccccc"
-                android:orientation="vertical" />
-
-            <LinearLayout
-                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                 android:background="#eeeed1"
                 android:orientation="vertical" >
 
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="30dp"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginBottom="20dp"
                     android:gravity="center"
                     android:text="须知"
-                    android:textSize="24dp"
+                    android:textSize="20dp"
                     android:textStyle="bold" />
 
                 <TextView
