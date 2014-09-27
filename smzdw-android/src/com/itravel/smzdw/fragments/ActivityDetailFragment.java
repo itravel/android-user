@@ -86,7 +86,6 @@ public class ActivityDetailFragment extends Fragment {
 					image = imageCache.get(result.getImage());
 					activityImage.setImageBitmap(image);
 				} catch (ExecutionException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
@@ -110,8 +109,6 @@ public class ActivityDetailFragment extends Fragment {
 			
 			TextView tips = (TextView) this.rootView.findViewById(R.id.activity_tips);
 			tips.setText(result.getTips());
-			
-			
 			
 		}
 		
